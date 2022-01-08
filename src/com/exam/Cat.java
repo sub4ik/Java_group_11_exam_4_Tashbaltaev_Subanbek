@@ -1,13 +1,16 @@
 package com.exam;
 
+import java.util.ArrayList;
+
 public class Cat {
     private String name;
     private int age;
     private int satietyLevel;
     private int moodLevel;
     private int healthLevel;
-    private boolean isAction = false;
-    private String ActionMessage;
+    private int average;
+    private transient boolean isAction = false;
+    private transient String ActionMessage;
 
     public Cat(String name, int age) {
         this.name = name;
@@ -15,6 +18,48 @@ public class Cat {
         satietyLevel = 20 + (int) (Math.random() * 61);
         moodLevel = 20 + (int) (Math.random() * 61);
         healthLevel = 20 + (int) (Math.random() * 61);
+    }
+
+    @Override
+    public String toString() {
+        return "Cat{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", satietyLevel=" + satietyLevel +
+                ", moodLevel=" + moodLevel +
+                ", healthLevel=" + healthLevel +
+                '}';
+    }
+    public static int sortByName(Cat cat, Cat cat1) {
+        return cat.name.compareTo(cat1.name);
+    }
+
+    public static int sortByAge(Cat cat, Cat cat1) {
+        return Integer.compare(cat.age, cat1.age);
+    }
+
+    public static int sortByHealth(Cat cat, Cat cat1) {
+        return Integer.compare(cat.healthLevel, cat1.healthLevel);
+    }
+
+    public static int sortByMood(Cat cat, Cat cat1) {
+        return Integer.compare(cat.moodLevel, cat1.moodLevel);
+    }
+
+    public static int sortBySatiety(Cat cat, Cat cat1) {
+        return Integer.compare(cat.satietyLevel, cat1.satietyLevel);
+    }
+
+    public static int sortByAverage(Cat cat, Cat cat1) {
+        return Integer.compare(cat.getAverage(), cat1.getAverage());
+    }
+
+    public int getAverage() {
+        return average;
+    }
+
+    public void setAverage(int average) {
+        this.average = average;
     }
 
     public String getName() {
