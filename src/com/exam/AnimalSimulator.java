@@ -32,6 +32,7 @@ public class AnimalSimulator {
             System.out.println("[2] - Играть с котом");
             System.out.println("[3] - Лечить кота");
             System.out.println("[4] - Следуюший день");
+            System.out.println("[5] - Сортировать по:");
             var scanner = new Scanner(System.in);
             var command = scanner.next();
             if (command.equals("A")) {
@@ -63,6 +64,21 @@ public class AnimalSimulator {
                 strategy = new NextDayAction();
                 for (Cat c: cats) {
                     strategy.doAction(c);
+                }
+            } else if (command.equals("5")) {
+                System.out.println("[name] - По имени");
+                System.out.println("[age] - По возрасту");
+                System.out.println("[health] - По здоровью");
+                System.out.println("[mood] - По настроению");
+                System.out.println("[satiety] - По сытости");
+                System.out.println("[avrg] - По среднему");
+                switch (scanner.next()) {
+                    case "name" -> cats.sort(Cat::sortByName);
+                    case "age" -> cats.sort(Cat::sortByAge);
+                    case "health" -> cats.sort(Cat::sortByHealth);
+                    case "mood" -> cats.sort(Cat::sortByMood);
+                    case "satiety" -> cats.sort(Cat::sortBySatiety);
+                    case "avrg" -> cats.sort(Cat::sortByAverage);
                 }
             } else if (command.equals("q")) {
                 break;
