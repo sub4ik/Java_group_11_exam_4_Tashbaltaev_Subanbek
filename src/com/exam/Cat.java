@@ -54,13 +54,6 @@ public class Cat {
         return Integer.compare(cat.getAverage(), cat1.getAverage());
     }
 
-    public int getAverage() {
-        return average;
-    }
-
-    public void setAverage(int average) {
-        this.average = average;
-    }
 
     public String getName() {
         return name;
@@ -99,6 +92,9 @@ public class Cat {
     public int getMoodLevel() {
         return moodLevel;
     }
+    public int getAverage() {
+        return (healthLevel + moodLevel + satietyLevel) / 3;
+    }
 
     public void changeMoodLevel(int moodLevel) {
         this.moodLevel += moodLevel;
@@ -111,7 +107,7 @@ public class Cat {
     }
 
     public void changeSatietyLevel(int satietyLevel) {
-        this.satietyLevel = satietyLevel;
+        this.satietyLevel += satietyLevel;
         if (this.satietyLevel < 0) {
             this.satietyLevel = 0;
         }

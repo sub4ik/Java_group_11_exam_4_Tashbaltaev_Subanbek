@@ -15,12 +15,12 @@ public class JsonSerializer {
         this.fileName = fileName;
     }
 
-    public List<Cat> getCats() throws IOException, RuntimeException {
+    public ArrayList<Cat> getCats() throws IOException, RuntimeException {
         Gson gson = new Gson();
         try(Reader reader = new FileReader(fileName)){
             Cat[] cats = gson.fromJson(reader,Cat[].class);
             List<Cat> catsList = Arrays.asList(cats);
-            return catsList;
+            return new ArrayList<>(catsList);
         }
     }
 
