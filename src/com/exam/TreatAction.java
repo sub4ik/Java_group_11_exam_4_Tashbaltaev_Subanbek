@@ -1,12 +1,12 @@
 package com.exam;
 
 public class TreatAction implements ActionStrategy{
-    private boolean isAction = false;
     @Override
     public void doAction(Cat cat) {
-        if (!isAction){
+        if (!cat.isAction()){
             System.out.println("Вы полечили кота!");
-            isAction = !isAction;
+            cat.setActionMessage("Вы сегодня уже поиграли с котом - " + cat.getName() + ", с возрастом - " + cat.getAge());
+            cat.setAction(true);
             if (cat.getAge() <= 5){
                 cat.changeHealthLevel(7);
                 cat.changeSatietyLevel(-3);
@@ -20,6 +20,6 @@ public class TreatAction implements ActionStrategy{
                 cat.changeSatietyLevel(-6);
                 cat.changeMoodLevel(-6);
             }
-        } else System.out.println("Вы сегодня уже лечили кота!");
+        } else System.out.println(cat.getActionMessage());
     }
 }

@@ -6,6 +6,8 @@ public class Cat {
     private int satietyLevel;
     private int moodLevel;
     private int healthLevel;
+    private boolean isAction = false;
+    private String ActionMessage;
 
     public Cat(String name, int age) {
         this.name = name;
@@ -19,8 +21,26 @@ public class Cat {
         return name;
     }
 
+    public boolean isAction() {
+        return isAction;
+    }
+
+    public void setAction(boolean action) {
+        isAction = action;
+    }
+
+    public String getActionMessage() {
+        return ActionMessage;
+    }
+
+    public void setActionMessage(String getActionMessage) {
+        this.ActionMessage = getActionMessage;
+    }
+
     public int getAge() {
         return age;
+
+
     }
 
     public int getHealthLevel() {

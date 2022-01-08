@@ -1,12 +1,12 @@
 package com.exam;
 
 public class FeedAction implements ActionStrategy{
-    private boolean isAction = false;
     @Override
     public void doAction(Cat cat) {
-        if (!isAction){
+        if (!cat.isAction()){
             System.out.println("Вы покормили кота!");
-            isAction = !isAction;
+            cat.setActionMessage("Вы сегодня уже кормили кота - " + cat.getName() + ", с возрастом - " + cat.getAge());
+            cat.setAction(true);
             if (cat.getAge() <= 5){
                 cat.changeSatietyLevel(7);
                 cat.changeMoodLevel(7);
@@ -18,7 +18,7 @@ public class FeedAction implements ActionStrategy{
                 cat.changeMoodLevel(4);
             }
         } else {
-            System.out.println("Вы сегодня уже кормили кота!");
+            System.out.println(cat.getActionMessage());
         }
 
     }
